@@ -1,0 +1,1 @@
+actually  i dont have any idea about ruby you should do your home work

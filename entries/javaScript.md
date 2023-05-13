@@ -1,0 +1,1 @@
+javaScript is mainly used for web dev
