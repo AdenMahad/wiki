@@ -81,10 +81,7 @@ def random_page(request):
     page = util.get_entry(i)
     return render(request,"encyclopedia/entry.html",{"page":page,"title":title})
 
-def entry(request,entry_name):
-        if util.get_entry(entry_name) != None:
-            entry = util.get_entry(entry_name)
-            return render(request,"encyclopedia/entry.html",{"page":entry})
+
 
 
 
