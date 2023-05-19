@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponseNotFound
+import random
 
 
 
@@ -15,7 +16,9 @@ def index(request):
 def entry_page(request , name):
     if util.get_entry(name) != None:
         page = util.get_entry(name)
-        return render(request,"encyclopedia/entry.html",{"page":page,})
+        title = name
+        
+        return render(request,"encyclopedia/entry.html",{"page":page,"title":title})
     else:
         return HttpResponseNotFound("<h1>Page not found</h1>")
     
@@ -44,12 +47,56 @@ def create_entry(request):
             else:
                 util.save_entry(title,content)
                 return render(request,"encyclopedia/new_entry.html",{"new_entry": util.get_entry(title)})
+        else:
+            return render(request, "encyclopedia/new_page.html", {"form": form})
+
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = NewEntry()
 
     return render(request, "encyclopedia/new_page.html", {"form": form})
+
+def edit(request):
+    if request.method == "POST":
+        title = request.POST['entry_title']
+        content = util.get_entry(title)
+        util.save_entry(title,content)
+        return render(request, "encyclopedia/edit_page.html", {"title":title,"content": content})
+def save_edit(request):
+        if request.method == 'POST':
+            title = request.POST['title']
+            content = request.POST['content']
+            util.save_entry(title,content)
+            page = util.get_entry(title)
+        return render(request,"encyclopedia/entry.html",{"page":page,"title":title})
+        
+
+def random_page(request):
+    random_entry = random.shuffle(util.list_entries())
+    all_entries = util.list_entries()
+    i = random.choice(all_entries)
+    title = i    
+    page = util.get_entry(i)
+    return render(request,"encyclopedia/entry.html",{"page":page,"title":title})
+
+def entry(request,entry_name):
+        if util.get_entry(entry_name) != None:
+            entry = util.get_entry(entry_name)
+            return render(request,"encyclopedia/entry.html",{"page":entry})
+
+
+
+    
+    
+        
+
+
+
+
+
+
 
 
 

@@ -1,11 +1,12 @@
 {% extends "encyclopedia/layout.html" %}
+{% load markdownify %}
 
 {% block title %}
    
 {% endblock %}
 
 {% block body %}
-    <li><h1>{{result}}</h1></li>
+    <li><h1>{{ result |markdownify}}</h1></li>
 
    
 
