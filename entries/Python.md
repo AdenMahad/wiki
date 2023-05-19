@@ -1,3 +1,3 @@
-# Python
-
-Python is a programming language that can be used both for writing **command-line scripts** or building **web applications**.
+Python
+
+Python is a programming language that can be used both for writing <strong>command-line scripts</strong> or building <strong>web applications</strong>.

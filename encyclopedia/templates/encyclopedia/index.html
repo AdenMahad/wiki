@@ -6,11 +6,15 @@
 
 {% block body %}
     <h1>All Pages</h1>
+    <hr style="height:3px;border-width:0;color:rgb(188, 163, 163);background-color:rgb(186, 166, 166)">
 
-    <ul>
+
+    <ol>
         {% for entry in entries %}
-        <li><a href="wiki/{{entry}}">{{entry}}</a></li>
+        <li><a href="wiki/{{entry |safe}}">{{entry}}</a></li>
+        <hr style="height:3px;width:200px;color:rgb(218, 204, 204);background-color:rgb(226, 212, 212)" align="left">
+
         {% endfor %}
-    </ul>
+    </ol>
 
 {% endblock %}

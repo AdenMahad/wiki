@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ page |markdownify }}</h1>
+    <h1>{{ page |safe|markdownify }}</h1>
     <!-- <h1>{{ entry|markdownify} }</h1> -->
     
 <form action="{% url 'edit' %}" method="POST">

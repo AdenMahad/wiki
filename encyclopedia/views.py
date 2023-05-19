@@ -46,7 +46,7 @@ def create_entry(request):
                 raise FileExistsError("file exists try another title name")
             else:
                 util.save_entry(title,content)
-                return render(request,"encyclopedia/new_entry.html",{"new_entry": util.get_entry(title)})
+                return render(request,"encyclopedia/entry.html",{"page": util.get_entry(title),"title":title})
         else:
             return render(request, "encyclopedia/new_page.html", {"form": form})
 
